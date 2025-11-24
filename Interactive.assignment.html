@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Web Page</title>
+    <style>
+        body {
+            font-family: Calibri Light, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        h1 {
+            color: #333;
+        }
+        .customization-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #todoList {
+            margin-top: 20px;
+        }
+        #todoList li {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="greeting">Hello User!</h1>
+    <p id="message">Welcome to this customizable page. Feel free to make it your own.</p>
+
+    <div class="customization-section">
+        <label for="userName">Your Name:</label>
+        <input type="text" id="userName" placeholder="Enter your name">
+
+        <label for="customMessage">Custom Message:</label>
+        <input type="text" id="customMessage" placeholder="Enter your message">
+
+        <label for="bgColor">Background Color:</label>
+        <select id="bgColor">
+            <option value="white">White</option>
+            <option value="lightblue">Light Blue</option>
+            <option value="lightgreen">Light Green</option>
+            <option value="lightyellow">Light Yellow</option>
+            <option value="lightcoral">Light Coral</option>
+        </select>
+
+        <button onclick="updatePage()">Apply Changes</button>
+    </div>
+
+    <div class="customization-section">
+        <label for="todoInput">Add To Do Item:</label>
+        <input type="text" id="todoInput" placeholder="Enter a to-do item">
+        <button onclick="addTodo()">Add To Do</button>
+        <ol id="todoList"></ol>
+    </div>
+
+    <script>
+        function updatePage() {
+            const name = document.getElementById('userName').value.trim();
+            const message = document.getElementById('customMessage').value.trim();
+            const color = document.getElementById('bgColor').value;
+
+            // Update greeting
+            if (name) {
+                document.getElementById('greeting').textContent = `Hello ${name}!`;
+            }
+
+            // Update message
+            if (message) {
+                document.getElementById('message').textContent = message;
+            }
+
+            // Update background color
+            document.body.style.backgroundColor = color;
+        }
+
+        function addTodo() {
+            const todoInput = document.getElementById('todoInput');
+            const todoText = todoInput.value.trim();
+
+            if (todoText) {
+                const todoList = document.getElementById('todoList');
+                const li = document.createElement('li');
+                li.textContent = todoText;
+                todoList.appendChild(li);
+                todoInput.value = ''; // Clear input
+            }
+        }
+
+        // Allow adding to-do items with Enter key
+        document.getElementById('todoInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciao Bella Vista Restaurant</title>
+    <style>
+        body {
+            font-family: 'Calibri Light', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        
+        .header {
+            background: linear-gradient(to bottom, orange, tan);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: maroon;
+            font-weight: bold;
+        }
+
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            width: 30%;
+            margin: 1.5%;
+            background-color: white;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px 15px 0 0;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            text-align: center;
+            padding: 15px;
+            margin: 0;
+            background-color: #333;
+            color: white;
+            border-radius: 0 0 15px 15px;
+        }
+
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 15px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        .modal-content h2 {
+            color: maroon;
+            font-weight: bold;
+        }
+
+        .close {
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            width: 33%;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            color: #D2691E;
+        }
+
+        /* Tablet or iPad View */
+        .tablet-view {
+            display: none;
+        }
+
+        .tablet-item {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            display: flex;
+            border-radius: 15px;
+            align-items: center;
+        }
+
+        .tablet-item img {
+            width: 200px;
+            height: 150px;
+            margin-right: 20px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .tablet-item div {
+            flex: 1;
+        }
+
+        .tablet-item h3 {
+            color: maroon;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .tablet-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Android or Cell Phone View */
+        .phone-view {
+            display: none;
+        }
+
+        .directions {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+        }
+
+        .directions h2 {
+            color: maroon;
+            font-weight: bold;
+        }
+
+        .map {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .map img {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+        }
+
+        
+
+        /* Tablet: 481px to 768px */
+        @media (max-width: 768px) and (min-width: 481px) {
+            .gallery {
+                display: none;
+            }
+
+            .tablet-view {
+                display: block;
+            }
+
+            .phone-view {
+                display: none;
+            }
+
+            .footer-content {
+                display: block;
+            }
+
+            .footer-section {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-section:nth-child(1),
+            .footer-section:nth-child(2) {
+                display: none;
+            }
+        }
+
+        /* Cell Phone: 480px and below */
+        @media (max-width: 480px) {
+            .gallery {
+                display: none;
+            }
+
+            .tablet-view {
+                display: none;
+            }
+
+            .phone-view {
+                display: block;
+            }
+
+            .footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="header">
+        <h1>Ciao Bella Vista Restaurant</h1>
+        <p>Authentic Italiano Cuisine</p>
+    </div>
+
+    
+    <div class="gallery">
+        <div class="menu-item" onclick="openModal(0)">
+            <img src="https://static.vecteezy.com/ti/fotos-gratis/p2/20222733-italiano-pizza-margherita-com-tomate-molho-mozzarella-queijo-manjericao-em-uma-sombrio-concreto-fundo-pizza-receita-e-cardapio-gratis-foto.jpg" alt="Margherita Pizza">
+            <h3>Margherita Pizza</h3>
+        </div>
+
+        <div class="menu-item" onclick="openModal(1)">
+            <img src="https://www.modernhoney.com/wp-content/uploads/2018/08/Fettuccine-Alfredo-Recipe-1.jpg" alt="Fettuccine Alfredo">
+            <h3>Fettuccine Alfredo</h3>
+        </div>
+
+        <div class="menu-item" onclick="openModal(2)">
+            <img src="https://img.taste.com.au/cS6PyyWG/taste/2016/11/lamb-osso-buco-with-rosemary-polenta-108066-1.jpeg" alt="Osso Buco">
+            <h3>Osso Buco</h3>
+        </div>
+
+        <div class="menu-item" onclick="openModal(3)">
+            <img src="https://images5.alphacoders.com/110/1100647.jpg" alt="Tiramisu">
+            <h3>Tiramisu</h3>
+        </div>
+
+        <div class="menu-item" onclick="openModal(4)">
+            <img src="https://versatilevinegar.org/wp-content/uploads/2016/01/Bruschetta.jpg" alt="Bruschetta">
+            <h3>Bruschetta</h3>
+        </div>
+
+        <div class="menu-item" onclick="openModal(5)">
+            <img src="https://www.thespruceeats.com/thmb/93CtTaq9Iuax9whRQUHnV9fxUp8=/3800x0/filters:no_upscale():max_bytes(150000):strip_icc()/seafood-risotto-5095826-8-e44210767a9e4825a4b37f645f15647d.jpg" alt="Seafood Risotto">
+            <h3>Seafood Risotto</h3>
+        </div>
+    </div>
+
+    
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+        </div>
+    </div>
+
+    
+    <div class="tablet-view">
+        <div class="tablet-item">
+            <img src="https://static.vecteezy.com/ti/fotos-gratis/p2/20222733-italiano-pizza-margherita-com-tomate-molho-mozzarella-queijo-manjericao-em-uma-sombrio-concreto-fundo-pizza-receita-e-cardapio-gratis-foto.jpg" alt="Margherita Pizza">
+            <div>
+                <h3>Margherita Pizza</h3>
+                <p>Classic Italian pizza with fresh mozzarella, tomatoes, and basil. Baked in our wood-fired oven.</p>
+            </div>
+        </div>
+
+        <div class="tablet-item">
+            <img src="https://www.modernhoney.com/wp-content/uploads/2018/08/Fettuccine-Alfredo-Recipe-1.jpg" alt="Fettuccine Alfredo">
+            <div>
+                <h3>Fettuccine Alfredo</h3>
+                <p>Creamy pasta with homemade fettuccine and our signature parmesan sauce.</p>
+            </div>
+        </div>
+
+        <div class="tablet-item">
+            <img src="https://img.taste.com.au/cS6PyyWG/taste/2016/11/lamb-osso-buco-with-rosemary-polenta-108066-1.jpeg" alt="Osso Buco">
+            <div>
+                <h3>Osso Buco</h3>
+                <p>Braised veal shanks in tomato sauce with vegetables, served with risotto.</p>
+            </div>
+        </div>
+
+        <div class="tablet-item">
+            <img src="https://images5.alphacoders.com/110/1100647.jpg" alt="Tiramisu">
+            <div>
+                <h3>Tiramisu</h3>
+                <p>Traditional Italian dessert with espresso-soaked ladyfingers and mascarpone cream.</p>
+            </div>
+        </div>
+
+        <div class="tablet-item">
+            <img src="https://versatilevinegar.org/wp-content/uploads/2016/01/Bruschetta.jpg" alt="Bruschetta">
+            <div>
+                <h3>Bruschetta</h3>
+                <p>Toasted bread with fresh tomatoes, garlic, basil, and olive oil.</p>
+            </div>
+        </div>
+
+        <div class="tablet-item">
+            <img src="https://www.thespruceeats.com/thmb/93CtTaq9Iuax9whRQUHnV9fxUp8=/3800x0/filters:no_upscale():max_bytes(150000):strip_icc()/seafood-risotto-5095826-8-e44210767a9e4825a4b37f645f15647d.jpg" alt="Seafood Risotto">
+            <div>
+                <h3>Seafood Risotto</h3>
+                <p>Creamy rice with fresh shrimp, scallops, and mussels in white wine sauce.</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="phone-view">
+        <div class="directions">
+            <h2>Directions to Bella Vista</h2>
+            <p><strong>Address:</strong> 456 Italian Avenue, Little Italy District</p>
+            <p><strong>From Downtown:</strong> Take Highway 90 East, exit at Italian Avenue (Exit 12). Turn right and our location is two blocks down on the left.</p>
+            <p><strong>From Airport:</strong> Follow signs to Downtown, merge onto Highway 90 East. Take Exit 12 for Italian Avenue.</p>
+            <p><strong>Parking:</strong> Free valet parking available in the evenings. Street parking during normal lunch hours.</p>
+        </div>
+
+        <div class="map">
+            <img src="https://images1.apartments.com/m2/AO3gY-tfavlqlRb4vhOAJjs4JetS-GQqbRKKNUwVxAU/H330W495/little-italy-student-housing-cleveland-oh-map-image-of-the-property.jpg?p=1" alt="Map to Restaurant">
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p>456 Italian Avenue<br>
+                Little Italy District<br>
+                Cleveland, Ohio 44105</p>
+                <p>Located in the heart of Little Italy, near the Opera House and Case Western Reserve University.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Bella Vista has served authentic Italian cuisine since 1935. Our historic family recipes bring the true taste of Italy to your table. 
+                   Plus, with classic cocktails and live jazz on weekends, our hidden speakeasy bar offers a unique and retro dining experience.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p><strong>Phone:</strong> (216) 555-PASTA</p>
+                <p><strong>Email:</strong> info@bellavista.com</p>
+                <p><strong>Hours:</strong><br>
+                Mon-Thu: 11am - 10pm<br>
+                Fri-Sat: 11am - 1am<br>
+                Sunday: 12pm - 9pm</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Array with menu information
+        var menuItems = [
+            {
+                title: "Margherita Pizza",
+                description: "Our signature pizza features fresh mozzarella, San Marzano tomatoes, and basil. Baked in our wood-fired oven imported from Naples. The crispy crust and melted cheese make this a customer favorite.",
+                image: "https://static.vecteezy.com/ti/fotos-gratis/p2/20222733-italiano-pizza-margherita-com-tomate-molho-mozzarella-queijo-manjericao-em-uma-sombrio-concreto-fundo-pizza-receita-e-cardapio-gratis-foto.jpg"
+            },
+            {
+                title: "Fettuccine Alfredo",
+                description: "Homemade pasta in a creamy sauce with butter and Parmigiano-Reggiano cheese. This classic dish is simple but delicious, with a rich and smooth texture that coats every strand of pasta.",
+                image: "https://www.modernhoney.com/wp-content/uploads/2018/08/Fettuccine-Alfredo-Recipe-1.jpg"
+            },
+            {
+                title: "Osso Buco",
+                description: "Tender veal shanks braised in white wine and tomatoes until the meat falls off the bone. Served with saffron risotto and topped with gremolata. A specialty from Milan that takes hours to prepare.",
+                image: "https://img.taste.com.au/cS6PyyWG/taste/2016/11/lamb-osso-buco-with-rosemary-polenta-108066-1.jpeg"
+            },
+            {
+                title: "Tiramisu",
+                description: "Traditional Italian dessert with espresso-soaked ladyfingers and mascarpone cheese. Dusted with cocoa powder and made fresh daily. The perfect balance of coffee and sweet cream.",
+                image: "https://images5.alphacoders.com/110/1100647.jpg"
+            },
+            {
+                title: "Bruschetta",
+                description: "Grilled Italian bread rubbed with garlic and topped with fresh tomatoes, basil, and olive oil. Finished with balsamic vinegar. A simple appetizer that celebrates fresh ingredients.",
+                image: "https://versatilevinegar.org/wp-content/uploads/2016/01/Bruschetta.jpg"
+            },
+            {
+                title: "Seafood Risotto",
+                description: "Creamy arborio rice with shrimp, scallops, and mussels. Cooked with white wine and fish stock. Each grain is perfectly cooked and the seafood is tender and flavorful.",
+                image: "https://www.thespruceeats.com/thmb/93CtTaq9Iuax9whRQUHnV9fxUp8=/3800x0/filters:no_upscale():max_bytes(150000):strip_icc()/seafood-risotto-5095826-8-e44210767a9e4825a4b37f645f15647d.jpg"
+            }
+        ];
+
+        // Function to open modal
+        function openModal(index) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modalImg");
+            var modalTitle = document.getElementById("modalTitle");
+            var modalDesc = document.getElementById("modalDesc");
+
+            modal.style.display = "block";
+            modalImg.src = menuItems[index].image;
+            modalTitle.innerHTML = menuItems[index].title;
+            modalDesc.innerHTML = menuItems[index].description;
+        }
+
+        // Function to close modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

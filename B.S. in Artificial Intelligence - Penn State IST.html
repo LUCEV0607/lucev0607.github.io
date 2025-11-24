@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="B.S. in Artificial Intelligence Methods and Applications at Penn State College of IST">
+  <title>B.S. in Artificial Intelligence - Penn State IST</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    body {
+      background-color: #0f172a;
+    }
+
+    .container.marketing {
+      background-color: #0f172a;
+    }
+
+    footer {
+      color: #94a3b8;
+    }
+
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #93c5fd;
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .featurette-divider {
+      margin: 5rem 0;
+    }
+
+    .featurette-heading {
+      letter-spacing: -.05rem;
+    }
+
+    /* CUSTOMIZE THE CAROUSEL */
+    .carousel {
+      margin-bottom: 4rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid #3b82f6;
+    }
+
+    .carousel-caption {
+      bottom: 3rem;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #3b82f6;
+    }
+
+    .carousel-item {
+      height: 28rem;
+      background-color: #1e293b;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+    
+    @media (min-width: 768px) {
+      .carousel-item {
+        height: 32rem;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      .carousel-item {
+        height: 36rem;
+      }
+    }
+
+    /* Lighter dark overlay for better image visibility */
+    .carousel-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .carousel-caption {
+      z-index: 2;
+    }
+
+    /* MARKETING CONTENT */
+    .marketing .col-lg-4, .marketing .col-lg-6 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .marketing .col-lg-4 p, .marketing .col-lg-6 p {
+      margin-right: .75rem;
+      margin-left: .75rem;
+    }
+
+    .marketing h2 {
+      font-weight: 400;
+    }
+
+    .rounded-circle {
+      border-radius: 50% !important;
+      border: 3px solid #3b82f6;
+    }
+
+    /* Square boxes for student sections */
+    .student-box {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border: 2px solid #475569;
+      border-radius: 8px;
+      padding: 2rem;
+      height: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .student-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      border-color: #3b82f6;
+    }
+
+    .student-box h2,
+    .student-box p {
+      color: #e2e8f0;
+    }
+
+    /* Feature boxes */
+    .featurette {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 2px solid #3b82f6;
+      border-radius: 8px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
+
+    .featurette h2,
+    .featurette .lead,
+    .featurette ul {
+      color: #e2e8f0;
+    }
+
+    .featurette-image {
+      border-radius: 8px;
+      border: 2px solid #3b82f6;
+    }
+
+    /* Next steps cards */
+    .card {
+      border: 2px solid #475569;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(96, 165, 250, 0.4);
+      border-color: #60a5fa;
+    }
+
+    .card-title {
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    .card-text {
+      color: #cbd5e1;
+    }
+
+    /* Next steps container */
+    .next-steps-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 2px solid #3b82f6;
+      border-radius: 8px;
+      padding: 3rem;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
+
+    .next-steps-container h2,
+    .next-steps-container .lead {
+      color: #e2e8f0;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar spacing */
+    main {
+      padding-top: 56px;
+    }
+  </style>
+</head>
+<body>
+  
+<header data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Penn State IST</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="https://ist.psu.edu/admissions">Request Information</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.psu.edu/admission/undergraduate/explore/visit-penn-state">Schedule a Visit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://raise.psu.edu/give">Make a Gift</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.google.com/search?q=Penn+State+IST">Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <!-- SLIDE 1: Is AI Right for Me? -->
+      <div class="carousel-item active">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp6397551.png&f=1&nofb=1&ipt=acb96ef6ed2a0f8620ba96881e941248d09c1bc4948497ca26a0ff5599fa88e6" alt="AI Brain Concept">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Is AI Right for Me?</h1>
+            <p class="opacity-75">Discover if Artificial Intelligence Methods and Applications is your path to the future.</p>
+            <p><a class="btn btn-lg btn-primary" href="#right-for-me">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SLIDE 2: What You'll Study -->
+      <div class="carousel-item">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F1533500.jpg&f=1&nofb=1&ipt=0fe53fb864315fb4677db9f0dfe0c20b0dd7b42230efd8a3cbc9a794864f8af0" alt="Technology and Learning">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>What You'll Study</h1>
+            <p>Gain foundational knowledge and state-of-the-art skills in AI-based solutions.</p>
+            <p><a class="btn btn-lg btn-primary" href="#what-youll-study">Explore Curriculum</a></p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SLIDE 3: Supporting Courses -->
+      <div class="carousel-item">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F2091373.jpg&f=1&nofb=1&ipt=e4e87ab5b657a6e8648b21be3e19141d99358d0564bd40cfd5c90d55dc316d12" alt="Global Technology Network">
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>Supporting Courses</h1>
+            <p>Deepen your expertise with technical courses across multiple disciplines.</p>
+            <p><a class="btn btn-lg btn-primary" href="#supporting-courses">View Courses</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes -->
+  <div class="container marketing">
+
+    <!-- Two columns of text with rounded images -->
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="student-box">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Current Students" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <defs>
+              <linearGradient id="gradCurrent" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#475569;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#64748b;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#gradCurrent)"/>
+            <text x="50%" y="50%" fill="#fff" dy=".3em" font-size="20" text-anchor="middle" font-weight="bold">STUDENT</text>
+          </svg>
+          <h2 class="fw-normal mt-3">Current Students</h2>
+          <p>Already a Penn State student? Explore how to declare the AIMA major and access resources to succeed in your studies.</p>
+          <p><a class="btn btn-secondary" href="https://ist.psu.edu/current-students">View Resources &raquo;</a></p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="student-box">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prospective Students" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <defs>
+              <linearGradient id="gradProspective" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#gradProspective)"/>
+            <text x="50%" y="50%" fill="#fff" dy=".3em" font-size="20" text-anchor="middle" font-weight="bold">APPLY</text>
+          </svg>
+          <h2 class="fw-normal mt-3">Prospective Students</h2>
+          <p>Ready to join Penn State? Learn about the admission process and discover what makes our AI program exceptional.</p>
+          <p><a class="btn btn-secondary" href="https://www.psu.edu/admission/undergraduate">Apply Now &raquo;</a></p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider" id="right-for-me">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Is Artificial Intelligence Methods and Applications Right for Me?</h2>
+        <p class="lead">To address complex real-world problems, Artificial Intelligence (AI) Methods and Applications combines technology with math, programming, computer science, psychology, law and policy, and ethical decision making. This program could be a great fit if you want to:</p>
+        <ul class="lead">
+          <li>Translate AI capabilities into useful applications across diverse fields.</li>
+          <li>Design AI systems that enhance human judgment, discovery, and creativity.</li>
+          <li>Balance technical excellence with ethical reasoning, effective communication, and interdisciplinary collaboration.</li>
+          <li>Lead responsible AI initiatives in organizations ranging from tech companies to research institutions, government agencies, and nonprofits.</li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI Concept" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="gradFeature1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#475569;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#64748b;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#94a3b8;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#gradFeature1)"/>
+          <text x="50%" y="35%" fill="#fff" dy=".3em" font-size="36" text-anchor="middle" font-weight="bold">AI + Ethics</text>
+          <text x="50%" y="50%" fill="#f1f5f9" dy=".3em" font-size="24" text-anchor="middle">Human-Centered</text>
+          <text x="50%" y="65%" fill="#f1f5f9" dy=".3em" font-size="24" text-anchor="middle">Innovation</text>
+        </svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider" id="what-youll-study">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">What You'll Study</h2>
+        <p class="lead">Gain foundational knowledge and state-of-the-art skills needed to design and deploy AI-based solutions:</p>
+        <ul class="lead">
+          <li>Artificial Intelligence – The Very Idea</li>
+          <li>Knowledge Representation and Inference</li>
+          <li>Automated Problem Solving</li>
+          <li>Machine Learning</li>
+          <li>Responsible Artificial Intelligence</li>
+          <li>Human-Centered AI</li>
+          <li>Generative AI Methods and Applications</li>
+        </ul>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curriculum" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="gradFeature2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#gradFeature2)"/>
+          <text x="50%" y="30%" fill="#fff" dy=".3em" font-size="32" text-anchor="middle" font-weight="bold">Deep Learning</text>
+          <text x="50%" y="45%" fill="#dbeafe" dy=".3em" font-size="28" text-anchor="middle">Neural Networks</text>
+          <text x="50%" y="60%" fill="#dbeafe" dy=".3em" font-size="28" text-anchor="middle">NLP & Vision</text>
+          <text x="50%" y="75%" fill="#dbeafe" dy=".3em" font-size="28" text-anchor="middle">Generative AI</text>
+        </svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider" id="supporting-courses">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Supporting Courses</h2>
+        <p class="lead">By taking a series of technical supporting courses, gain a deeper understanding in fields like computer science, data sciences, electrical engineering and advanced math.</p>
+        <p class="lead">Application focus areas include:</p>
+        <ul class="lead">
+          <li>Agricultural Sciences</li>
+          <li>Business Fundamentals</li>
+          <li>Enterprise Technology Integration</li>
+          <li>National Security</li>
+          <li>Philosophy</li>
+          <li>Psychology</li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Applications" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="gradFeature3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#334155;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#475569;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#64748b;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#gradFeature3)"/>
+          <text x="50%" y="25%" fill="#fff" dy=".3em" font-size="28" text-anchor="middle" font-weight="bold">Healthcare AI</text>
+          <text x="50%" y="40%" fill="#e2e8f0" dy=".3em" font-size="28" text-anchor="middle">Business AI</text>
+          <text x="50%" y="55%" fill="#e2e8f0" dy=".3em" font-size="28" text-anchor="middle">Security AI</text>
+          <text x="50%" y="70%" fill="#e2e8f0" dy=".3em" font-size="28" text-anchor="middle">Research AI</text>
+        </svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider" id="next-steps">
+
+    <div class="row featurette">
+      <div class="col-md-12">
+        <div class="next-steps-container">
+          <h2 class="featurette-heading fw-normal lh-1 text-center mb-4">Next Steps</h2>
+          <p class="lead text-center mb-4">Ready to start your journey in Artificial Intelligence? Take the next step:</p>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Request Information</h5>
+                  <p class="card-text">Get more details about the AIMA program and admissions.</p>
+                  <a href="https://ist.psu.edu/admissions" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Schedule a Visit</h5>
+                  <p class="card-text">Experience Penn State campus life and meet our faculty.</p>
+                  <a href="https://www.psu.edu/admission/undergraduate/explore/visit-penn-state" class="btn btn-primary">Plan Your Visit</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Apply Now</h5>
+                  <p class="card-text">Submit your application to Penn State and join us.</p>
+                  <a href="https://www.psu.edu/admission/undergraduate" class="btn btn-primary">Apply</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Explore Majors</h5>
+                  <p class="card-text">Discover other programs at the College of IST.</p>
+                  <a href="https://ist.psu.edu/degree-programs/undergraduate" class="btn btn-primary">View Programs</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Financial Aid</h5>
+                  <p class="card-text">Learn about scholarships, grants, and financial support.</p>
+                  <a href="https://www.psu.edu/admission/undergraduate/aid" class="btn btn-primary">Get Info</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Contact Advising</h5>
+                  <p class="card-text">Have questions? Connect with our academic advisers.</p>
+                  <a href="https://ist.psu.edu/current-students/appointments" class="btn btn-primary">Contact Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 The Pennsylvania State University &middot; 
+      <a href="https://www.psu.edu/web-privacy-statement">Privacy</a> &middot; 
+      <a href="https://policy.psu.edu/policies/ad91">Non-Discrimination</a> &middot; 
+      <a href="https://www.psu.edu/accessibilitystatement">Accessibility</a> &middot; 
+      <a href="https://www.psu.edu/legalstatements">Legal</a> &middot; 
+      <a href="https://www.psu.edu/copyright-information">Copyright</a>
+    </p>
+  </footer>
+</main>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

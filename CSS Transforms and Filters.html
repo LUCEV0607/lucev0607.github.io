@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transforms and Filters</title>
+    <style>
+        /* Reset & base styles */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: 'Calibri Light', Calibri, sans-serif;
+            background-color: #34495e;
+            color: #ecf0f1;
+            min-height: 100vh;
+        }
+
+        /* Main grid */
+        .container {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 10px;
+            height: 95vh;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / 3;
+            background: linear-gradient(135deg, #708090, #5f9ea0);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            animation: slideDown 1.5s ease-out forwards;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to   { transform: translateY(0);      opacity: 1; }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #808080;
+            padding: 15px;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sidebar h2 {
+            font-size: 1.4rem;
+            margin: 0 0 15px;
+            text-align: center;
+            color: #f0f0f0;
+        }
+        .nav-link {
+            background-color: white;
+            color: #808080;
+            padding: 12px 8px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,.2);
+        }
+        .nav-link:hover {
+            transform: scale(1.15);
+            background-color: #f8f9fa;
+            color: #5f9ea0;
+        }
+
+        /* Main content area */
+        .main-content {
+            grid-row: 2;
+            grid-column: 2;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 10px;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 10px;
+        }
+
+        /* Content-1 (top) */
+        .content-1 {
+            grid-column: 1 / 3;
+            background: linear-gradient(135deg, #708090, #5f9ea0);
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .content-1 h2 { margin: 0 0 12px; font-size: 1.6rem; }
+        .content-1 p  { margin: 0 0 15px; font-style: italic; }
+
+        .image-box {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Base image styling (merged) */
+        .image {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 8px;
+            transition: all .4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,.3);
+        }
+        .image::before {
+            content: attr(aria-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: .8rem;
+            color: #ddd;
+            white-space: nowrap;
+        }
+
+        /* Individual images */
+        .image-1 {
+            background-image: url('https://img1.wsimg.com/isteam/ip/1e1b3693-028b-4bac-95ee-07acfde25359/blob.png/:/rs=w:719,h:479');
+            filter: grayscale(100%);
+        }
+        .image-2 {
+            background-image: url('https://img1.wsimg.com/isteam/ip/1e1b3693-028b-4bac-95ee-07acfde25359/Business%20tech%20review.jpg/:/cr=t:12.49%25,l:0%25,w:100%25,h:75.03%25/rs=w:600,h:300,cg:true');
+            filter: blur(4px);
+        }
+        .image-3 {
+            background-image: url('https://img1.wsimg.com/isteam/ip/1e1b3693-028b-4bac-95ee-07acfde25359/Modern%20banking.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:400,cg:true');
+        }
+
+        /* Hover effects */
+        .image-1:hover { filter: grayscale(0%); transform: scale(1.1); }
+        .image-2:hover { filter: blur(0);       transform: scale(1.1); }
+        .image-3:hover {                         transform: rotate(20deg) scale(1.1); }
+
+        /* Content-2 & Content-3 */
+        .content-2, .content-3 {
+            background-color: #708090;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .content-2 h3, .content-3 h3 { margin: 0 0 10px; font-size: 1.3rem; }
+        .content-2 ul, .content-3 ul { margin: 0; padding-left: 20px; }
+        .content-2 li, .content-3 li { margin-bottom: 6px; }
+
+        /* Footer */
+        .footer {
+            grid-column: 1 / 3;
+            background: linear-gradient(135deg, #708090, #5f9ea0);
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: .9rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr auto;
+                height: auto;
+                padding: 10px;
+            }
+            .sidebar, .header, .footer { grid-column: 1 / 2; }
+            .main-content { grid-row: 3; grid-column: 1; }
+            .content { grid-template-columns: 1fr; }
+            .content-1 { grid-column: 1; }
+            .image-box { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <h1>LUCEV Group, LLC</h1>
+        </header>
+
+        <!-- Sidebar -->
+        <nav class="sidebar" aria-label="Main navigation">
+            <h2>Legend</h2>
+            <div class="nav-link" role="button" tabindex="0">Home</div>
+            <div class="nav-link" role="button" tabindex="0">About</div>
+            <div class="nav-link" role="button" tabindex="0">Gallery</div>
+            <div class="nav-link" role="button" tabindex="0">Contact</div>
+        </nav>
+
+        <!-- Main Content -->
+        <section class="main-content">
+            <div class="content">
+
+                <!-- Content-1 (images) -->
+                <article class="content-1">
+                    <h2>Our Core Competency</h2>
+                    <p>LUCEV Group is a single source of commercial real estate and business acquisition funding...</p>
+                    <div class="image-box">
+                        <div class="image image-1" aria-label="Grayscale Filter"></div>
+                        <div class="image image-2" aria-label="Blur Effect"></div>
+                        <div class="image image-3" aria-label="Rotate Transform"></div>
+                    </div>
+                </article>
+
+                <!-- Content-2 -->
+                <article class="content-2">
+                    <h3>Our Business Model</h3>
+                    <p>LUCEV Group facilitates the following:</p>
+                    <ul>
+                        <li>Due Diligence and Administrative Support</li>
+                        <li>Loan Proposal Packaging</li>
+                        <li>Transaction Closing</li>
+                    </ul>
+                </article>
+
+                <!-- Content-3 -->
+                <article class="content-3">
+                    <h3>Our Financial Services</h3>
+                    <p>LUCEV Group is a financial technology solutions consultancy specializing in:</p>
+                    <ul>
+                        <li>Short-term Bridge Financing</li>
+                        <li>Conventional Commercial Lending</li>
+                        <li>Private Equity Commercial Lending</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>LUCEV Group, LLC &copy; 2025 IST 250 Student Project</p>
+        </footer>
+
+    </div>
+</body>
+</html>

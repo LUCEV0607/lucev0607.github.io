@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHub - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arial&family=Calibri:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6e6e6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        header {
+            background-color: #1a3c6e;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+            
+        header h1 {
+            font-family: 'Calibri', sans-serif;
+            font-weight: 300;
+            margin: 0;
+            font-size: 2.8em;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+            
+        nav ul li a.active, nav ul li a:hover {
+            color: #f4d03f;
+            border-bottom: 2px solid #f4d03f;
+            transform: scale(1.1);
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 25px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero h2 {
+            font-family: 'Calibri', sans-serif;
+            font-weight: 300;
+            color: #1a3c6e;
+            font-size: 2em;
+        }
+
+        .hero-image {
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            margin: 25px auto;
+            display: block;
+            border: 2px solid #1a3c6e;
+        }
+
+        .content {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+
+        .float-box {
+            float: right;
+            width: 200px;
+            margin: 20px 0 20px 25px;
+            padding: 15px;
+            background-color: #e8ecef;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .float-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #1a3c6e;
+        }
+
+        .float-box p {
+            margin: 12px 0 0;
+            font-size: 0.95em;
+        }
+
+        .info-box {
+            background-color: #f4d03f;
+            color:#1a3c6e;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+
+        }
+        .info-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #1a3c6e;
+            margin-top: 15px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            font-family: 'Calibiri', sans-serif;
+            font-weight: 300;
+           
+        }
+
+        .highlight {
+            color: #d35400;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1a3c6e;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+
+        }
+
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 15px 0;
+            }
+
+            .float-box {
+                float: none;
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CryptoHub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Cryptocurrencies</a></li>
+                <li><a href="wallet.html">Wallet Guide</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Welcome to CryptoHub</h2>
+            <p>The trusted source for <span class="highlight">cryptocurrency</span> knowledge and insights.</p>
+            <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Cryptocurrency coins" class="hero-image">
+        </section>
+        <section class="content">
+            <div class="float-box">
+                <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bitcoin logo">
+                <p><b>Bitcoin</b>: The pioneer of decentralized digital currency.</p>
+            </div>
+            <p><i>Cryptocurrencies</i> are revolutionizing the financial world. From <b>Bitcoin</b> to <b>Ethereum</b>, these digital assets offer secure, transparent, and decentralized transactions. At CryptoHub, we provide up-to-date information to help you navigate this exciting space. Whether you are a beginner or an expert, our resources will guide you through the complexities of <i>blockchain</i> technology and crypto investments.</p>
+            <p>Explore this site and learn about different <i>cryptocurrencies</i>, how to securely store them, and the latest market trends. Join the crypto revolution...</p>
+        </section>
+        <section class="content" id="about">
+            <h2>What Are Cryptocurrencies?</h2>
+            <p><i>Cryptocurrencies</i> are digital or virtual currencies that use <b>cryptography</b> for security. These currencies operate on decentralized networks based on <b>blockchain</b> technology. Thereby ensuring transparency and immutability.</p>
+            <div class="info-box">
+                <h3>Popular Cryptocurrencies</h3>
+                <ul>
+                    <li><span class="highlight">Bitcoin (BTC)</span>: The first and most well-known <i>cryptocurrency</i>.</li>
+                    <li><span class="highlight">Ethereum (ETH)</span>: Known for <b>smart contracts</b> and decentralized apps.</li>
+                    <li><span class="highlight">Cardano (ADA)</span>: Focused on sustainability and scalability.</li>
+                </ul>
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.1FUP7bLfn_l_OmhZf0GJGQHaEJ%3Fpid%3DApi&f=1&ipt=978d4cd1b90f5b52ffa2af7e4661a8ac786b93b10dba988b1d0dca8c24cd7f12&ipo=images" alt="Blockchain network">
+            </div>
+            <p>Unlike traditional currencies, <i>cryptocurrencies</i> are not controlled by any central banking authority. As such, making these currencies resistant to government interference. Learn more about its technology and use cases on CryptoHub.</p>
+        </section>
+         <section class="content" id="wallet">
+            <h2>How to Choose a Crypto Wallet</h2>
+            <p>A <i>cryptocurrency wallet</i> is essential for securely storing and managing digital assets. Here is a guide to help choose the best one.</p>
+            <div class="float-box">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.tUqXvGHah0GQWnA8abO_owHaHa%3Fpid%3DApi&f=1&ipt=519d6e07c3c6343ebba46fa7d89fcbaa787e45c419873d147d5d2b5b91e6fa75&ipo=images" alt="Crypto wallet">
+                <p>Secure digital assets with a reliable <b>wallet</b>.</p>
+            </div>
+            <p>There are two main types of wallets: <span class="highlight">hot wallets</span> (online, convenient but less secure) and <span class="highlight">cold wallets</span> (offline, highly secure). Consider factors like security, ease of use, and compatibility with <i>cryptocurrencies</i>.</p>
+            <div class="info-box">
+                <h3>Wallet Tips</h3>
+                <ul>
+                    <li>Always back up <b>private keys</b>.</li>
+                    <li>Use <b>two-factor authentication</b> for hot wallets.</li>
+                    <li>Choose reputable wallet providers.</li>
+                </ul>
+            </div>
+        </section>

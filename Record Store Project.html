@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purple Magic Record Store</title>
+  <style>
+    
+    :root {
+      --primary-purple: #6a5acd; 
+      --light-purple: #f5f0ff; 
+      --dark-border: #9370db; 
+      --accent-yellow: #fbc02d;
+      --accent-bg-yellow: #fff9c4;
+      --error-red: #e57373;
+    }
+    * { 
+      box-sizing: border-box; 
+      transition: color 0.15s ease, background-color 0.15s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    } 
+    body {
+      font-family: "Calibri Light", Calibri, sans-serif;
+      margin: 0;
+      padding: 0;
+      
+      background: linear-gradient(to bottom, #e6d9f5 0%, var(--light-purple) 30%, #ffffff 70%, #ffffff 100%);
+      min-height: 100vh;
+    }
+    
+    
+    nav {
+      background-color: var(--primary-purple);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center; 
+      gap: 30px; 
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px; 
+    }
+    nav a:hover,
+    nav a:focus-visible { 
+      text-decoration: underline;
+      outline: 2px solid white; 
+      outline-offset: 2px;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-purple);
+      padding: 20px;
+      margin: 0;
+    }
+    h2 {
+      color: var(--primary-purple);
+      margin: 10px 20px 0;
+      font-style: italic;
+    }
+
+   
+    .featured-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; 
+      align-items: flex-start; 
+      margin: 20px;
+      gap: 20px; 
+    }
+
+    .album {
+      width: 200px;
+      height: 320px;
+      background-color: var(--light-purple);
+      
+      padding: 10px;
+      text-align: center;
+      border: 3px solid var(--dark-border);
+      border-radius: 15px;
+      position: relative;
+      overflow: visible; 
+     
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    }
+    
+    .album:hover, .album:focus-within { 
+      transform: scale(1.05); 
+      box-shadow: 0 10px 18px rgba(0,0,0,.2);
+      z-index: 10; 
+    }
+    .album-cover {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 10px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .album-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .album-title { font-weight: bold; margin-bottom: 3px; font-size: 14px; }
+    .album-artist { margin-bottom: 5px; font-size: 13px; }
+    .album-details { 
+      font-size: 11px; 
+      color: #555; 
+      margin-top: 5px; 
+      display: flex; 
+      justify-content: space-around;
+    }
+    
+    .album-details dt, .album-details dd {
+        display: inline;
+        margin: 0;
+    }
+
+    .hidden-info {
+      display: none;
+      background-color: var(--accent-bg-yellow);
+      padding: 8px;
+      margin-top: 8px;
+      border: 2px solid var(--accent-yellow);
+      border-radius: 8px;
+      font-size: 11px;
+      
+      position: absolute;
+      top: calc(100% + 10px); 
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+    }
+    .hidden-info p { margin: 3px 0; }
+    
+    
+    .album:hover .hidden-info, 
+    .album:focus-within .hidden-info { 
+      display: block; 
+    }
+
+    
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 3px solid var(--dark-border);
+    }
+    th {
+      background-color: var(--primary-purple); 
+      color: #fff;
+      padding: 10px;
+      text-align: left;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    tr:nth-child(even) { background-color: var(--light-purple); } 
+
+    
+    footer {
+      background-color: var(--primary-purple);
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      margin: 40px 10px 10px;
+      border-radius: 10px;
+    }
+    footer h3 { font-size: 18px; margin-bottom: 8px; }
+    footer p { font-size: 14px; margin: 4px 0; }
+    footer a { color: #fff; text-decoration: underline; } 
+
+    .about-wrap {
+      width: 80%;
+      margin: 20px auto;
+      position: relative;
+      overflow: auto;
+    }
+    .about-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ff6f00;
+      padding: 10px;
+      border: 2px solid #e65100;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 700;
+      z-index: 5;
+    }
+    .about-float {
+      float: right;
+      width: 220px;
+      margin: 0 0 10px 15px;
+      border: 3px solid var(--dark-border);
+      border-radius: 12px;
+      background: var(--light-purple);
+      padding: 8px;
+      text-align: center;
+      font-size: 12px;
+      z-index: 1;
+    }
+    .about-float img {
+      display: block;
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 6px;
+    }
+
+      @media (max-width: 560px) {
+      .featured-container { gap: 10px; }
+      .album { 
+        width: 46vw; 
+        height: auto; 
+        margin: 0; 
+      }
+      .album-cover { width: 100%; height: 46vw; max-height: 200px; }
+      table { width: 94%; }
+      .about-wrap { width: 94%; }
+      .about-float { float: none; width: 100%; margin: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#home" role="button" onclick="showHome(); return false;">Home</a></li>
+      <li><a href="#about" role="button" onclick="showAbout(); return false;">About</a></li>
+    </ul>
+  </nav>
+
+  <main id="home-page">
+    <h1>Purple Magic Records</h1>
+
+    <h2>Featured Albums...</h2>
+    <section class="featured-container" aria-label="Featured albums">
+      <figure class="album" tabindex="0">
+        <div class="album-cover">
+          <img src="https://dn721903.ca.archive.org/0/items/mbid-70fc98ac-02a1-4ec5-8092-93fb3a6ae958/mbid-70fc98ac-02a1-4ec5-8092-93fb3a6ae958-35322664622.jpg" alt="Dark Side of the Moon cover art by Pink Floyd"/>
+        </div>
+        <figcaption class="album-title">Dark Side of the Moon</figcaption>
+        <p class="album-artist">Pink Floyd</p>
+        
+        <dl class="album-details">
+          <dt>Year:</dt><dd>1973</dd>
+          <dt>Genre:</dt><dd>Rock</dd>
+        </dl>
+        
+        <div class="hidden-info">
+          <p>Classic Progressive Rock Album</p>
+          <p>Over 45 million copies sold</p>
+        </div>
+      </figure>
+
+      <figure class="album" tabindex="0">
+        <div class="album-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b5/58/d3/b558d32f-24fd-c889-d544-bc4c96f6113e/dj.oinzmlgt.jpg/1200x1200bb.jpg" alt="Thriller cover art by Michael Jackson"/>
+        </div>
+        <figcaption class="album-title">Thriller</figcaption>
+        <p class="album-artist">Michael Jackson</p>
+        <dl class="album-details">
+          <dt>Year:</dt><dd>1982</dd>
+          <dt>Genre:</dt><dd>Pop</dd>
+        </dl>
+        <div class="hidden-info">
+          <p>Best-selling album of all time</p>
+          <p>8 Grammy Awards</p>
+        </div>
+      </figure>
+
+      <figure class="album" tabindex="0">
+        <div class="album-cover">
+          <img src="https://wallpaperaccess.com/full/695837.jpg" alt="Abbey Road cover art by The Beatles"/>
+        </div>
+        <figcaption class="album-title">Abbey Road</figcaption>
+        <p class="album-artist">The Beatles</p>
+        <dl class="album-details">
+          <dt>Year:</dt>
+          <dd>1969</dd>
+          <dt>Genre:</dt>
+          <dd>Rock</dd>
+        </dl>
+        <div class="hidden-info">
+          <p>Iconic crosswalk cover photo</p>
+          <p>Features "Come Together"</p>
+        </div>
+      </figure>
+
+      <figure class="album" tabindex="0">
+        <div class="album-cover">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/542cab66888851.5b268c863d209.jpg" alt="Kind of Blue cover art by Miles Davis"/>
+        </div>
+        <figcaption class="album-title">Kind of Blue</figcaption>
+        <p class="album-artist">Miles Davis</p>
+        <dl class="album-details">
+          <dt>Year:</dt><dd>1959</dd>
+          <dt>Genre:</dt><dd>Jazz</dd>
+        </dl>
+        <div class="hidden-info">
+          <p>Best-selling jazz record</p>
+          <p>Modal jazz masterpiece</p>
+        </div>
+      </figure>
+
+      <figure class="album" tabindex="0">
+        <div class="album-cover">
+          <img src="https://live.staticflickr.com/3801/13955498175_8da6b6bf8d_b.jpg" alt="Rumours cover art by Fleetwood Mac"/>
+        </div>
+        <figcaption class="album-title">Rumours</figcaption>
+        <p class="album-artist">Fleetwood Mac</p>
+        <dl class="album-details">
+          <dt>Year:</dt><dd>1977</dd>
+          <dt>Genre:</dt><dd>Rock</dd>
+        </dl>
+        <div class="hidden-info">
+          <p>40 million copies sold</p>
+          <p>Grammy Album of the Year</p>
+        </div>
+      </figure>
+
+      <figure class="album" tabindex="0">
+        <div class="album-cover">
+          <img src="https://is4-ssl.mzstatic.com/image/thumb/Music127/v4/a8/3a/57/a83a574d-61fa-5012-bc58-09abf70ee6bd/093624930402.jpg/1200x1200bf-60.jpg" alt="Purple Rain cover art by Prince"/>
+        </div>
+        <figcaption class="album-title">Purple Rain</figcaption>
+        <p class="album-artist">Prince</p>
+        <dl class="album-details">
+          <dt>Year:</dt><dd>1984</dd>
+          <dt>Genre:</dt><dd>Pop/Rock</dd>
+        </dl>
+        <div class="hidden-info">
+          <p>Soundtrack and studio album</p>
+          <p>Over 25 million copies sold</p>
+        </div>
+      </figure>
+
+    </section>
+
+    <h2>Inventory...</h2>
+    <table aria-label="Current vinyl inventory">
+      <thead>
+        <tr>
+          <th scope="col">Artist Name</th>
+          <th scope="col">Album Name</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Pink Floyd</td><td>Dark Side of the Moon</td><td>$24.99</td></tr>
+        <tr><td>Michael Jackson</td><td>Thriller</td><td>$19.99</td></tr>
+        <tr><td>The Beatles</td><td>Abbey Road</td><td>$22.99</td></tr>
+        <tr><td>Miles Davis</td><td>Kind of Blue</td><td>$18.99</td></tr>
+        <tr><td>Fleetwood Mac</td><td>Rumours</td><td>$21.99</td></tr>
+        <tr><td>Prince</td><td>Purple Rain</td><td>$23.99</td></tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <h3>Contact Information</h3>
+      <address>
+        <p>Address: 123 Nittany Lion Road, State College, PA 16801</p>
+        <p>Phone: (814) 555-1234</p>
+        <p>Email: <a href="mailto:info@purplemagicrecords.com">info@purplemagicrecords.com</a></p>
+      </address>
+      <p>&copy; 2025 Purple Magic Records</p>
+    </footer>
+  </main>
+
+  <section id="about-page" style="display:none;" aria-labelledby="about-heading">
+    <h1 id="about-heading">About Purple Magic Records...</h1>
+
+    <div class="about-wrap">
+      
+      <div class="about-float">
+        <img src="https://www.meltingpotblog.com/wp-content/uploads/2010/01/vinylstacks.jpg" alt=" Rows of vinyl records"/>
+        <div>Local vinyl curation • Trade-ins welcome</div>
+      </div>
+
+      <p>
+        Welcome to Purple Magic Record Store. As noted, we have served vinyl music
+        lovers since 2020. Our store specializes in new and used vinyl records. We carry a wide
+        selection of genres—rock, pop, jazz, classical, and more. We are located in downtown
+        State College. Our store hours are Monday through Saturday from 10am to 7pm.
+        Stop by and browse our collection. Our staff is knowledgeable and passionate about music.
+        Whether it is classical or something more modern, we help find exactly what you are
+        looking for. Plus, we buy used records. So, if you have a collection you want to sell,
+        bring it in and allow us to make a reasonable offer.
+      </p>
+
+      <p>
+        Thank you for supporting local music stores and Penn State student entrepreneurship.
+      </p>
+    </div>
+
+    <footer>
+      <h3>Contact Information</h3>
+      <address>
+        <p>Address: 123 Nittany Lion Road, State College, PA 16801</p>
+        <p>Phone: (814) 555-1234</p>
+        <p>Email: <a href="mailto:info@purplemagicrecords.com">info@purplemagicrecords.com</a></p>
+      </address>
+      <p>&copy; 2025 Purple Magic Records</p>
+    </footer>
+  </section>
+
+  <script>
+    function showHome() {
+      
+      document.getElementById('home-page').style.display = 'block';
+      document.getElementById('about-page').style.display = 'none';
+      document.getElementById('home-page').setAttribute('tabindex', '-1');
+      document.getElementById('home-page').focus();
+      document.getElementById('home-page').removeAttribute('tabindex');
+    }
+    function showAbout() {
+      
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('about-page').style.display = 'block';
+      document.getElementById('about-page').setAttribute('tabindex', '-1');
+      document.getElementById('about-page').focus();
+      document.getElementById('about-page').removeAttribute('tabindex');
+    }
+    // 
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('nav a[href="#home"]').focus();
+    });
+  </script>
+</body>
+</html>
